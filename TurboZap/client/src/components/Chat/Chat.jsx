@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useRef, useState, useEffect } from "react";
 import style from './Chat.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 // eslint-disable-next-line react/prop-types
 export default function Chat({socket}) {
@@ -25,7 +28,6 @@ export default function Chat({socket}) {
         // eslint-disable-next-line react/prop-types
         socket.emit('message', message)
         clearInput()
-
     }
 
     const clearInput = () => {
@@ -40,7 +42,6 @@ export default function Chat({socket}) {
     bottomRef.current.scrollIntoView({behavior: 'smooth'})
     }
 
-
     return (
         <div>
             <div className={style['chat-container']}>
@@ -50,7 +51,12 @@ export default function Chat({socket}) {
                             // eslint-disable-next-line react/prop-types
                             <div className={`${style["message-container"]} ${message.authorId === socket.id && style["message-mine"]}`} key={index}>
                                 <div className="message-author"><strong>{message.author}</strong></div>
-                                <div className="message-text">{message.text}</div>
+                                <div className="message-flex">
+                                    <div className="message-text">{message.text}</div>
+                                    {
+                                        message.admin === 'admin' && <FontAwesomeIcon icon={faEnvelope} />
+                                    }
+                                </div>
                             </div>
                         ))
                     }

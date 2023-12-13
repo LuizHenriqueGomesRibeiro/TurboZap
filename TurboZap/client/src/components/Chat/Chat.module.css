@@ -1,4 +1,8 @@
-.chat-container{
+  .message-flex{
+    display: flex;
+  }
+  
+  .chat-container{
     height: 600px;
     width: 400px;
     background-color: #fff;

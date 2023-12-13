@@ -7,11 +7,14 @@ import io from 'socket.io-client'
 export default function Join({setChatVisibility, setSocket}) {
   
   const usernameRef = useRef()
+  const adminRef = useRef()
 
   const handleSubmit = async () => {
     const username = usernameRef.current.value
+    const admin = adminRef.current.value
     if(!username.trim()) return
     const socket = await io.connect('http://localhost:3001')
+    socket.emit('set_admin', admin)
     socket.emit('set_username', username)
     setSocket(socket)
     setChatVisibility(true)
@@ -22,7 +25,7 @@ export default function Join({setChatVisibility, setSocket}) {
       <h1>Join</h1>
       <input type="text" ref={usernameRef} placeholder='Nome do usuário'/>
       <label htmlFor="admin">Deseja ser administrador</label>
-      <select id="admin" name="admin">
+      <select id="admin" name="admin" ref={adminRef}>
         <option value="admin">Sim</option>
         <option value="nao">Nao</option>
       </select>
