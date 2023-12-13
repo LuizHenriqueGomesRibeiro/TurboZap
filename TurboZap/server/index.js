@@ -21,8 +21,6 @@ io.on('connection', socket => {
 
     socket.on('set_admin', admin => {
         socket.data.admin = admin
-        console.log('O usuario deseja ser admin?')
-        console.log(socket.data.admin)
     })
 
     socket.on('message', text => {
