@@ -3,10 +3,12 @@ const { Socket } = require('socket.io')
 
 const app = require('express')()
 const server = require('http').createServer(app)
-const io = require('socket.io')(server, {cors: {origin: 'http://localhost:5173'}})
+const io = require('socket.io')(server, { cors: { origin: 'http://localhost:5173' } })
 const uuid = require('uuid');
 
 const PORT = 3001
+
+let messageList = [];
 
 io.on('connection', socket => {
     console.log('Usuário conectado!', socket.id);
@@ -14,28 +16,40 @@ io.on('connection', socket => {
     socket.on('disconnect', reason => {
         console.log('Usuário desconectado!', socket.id)
     })
-    
+
     socket.on('set_username', username => {
-        socket.data.username = username
+        socket.data = { username };
     })
 
     socket.on('set_admin', admin => {
-        socket.data.admin = admin
+        socket.data = { ...socket.data, admin };
     })
 
     socket.on('message', text => {
-        io.emit('receive_message', {
+        const newMessage = {
             id: generateId(),
-            text, 
+            text,
             authorId: socket.id,
             author: socket.data.username,
             admin: socket.data.admin
-        })
+        };
+
+        messageList.push(newMessage);
+        io.emit('receive_message', newMessage);
     })
 
     function generateId() {
         return uuid.v4();
     }
+
+    socket.on('deleteMessage', messageId => {
+        const deletedMessage = messageList.find(message => message.id === messageId);
+
+        if (deletedMessage) {
+            messageList = messageList.filter(message => message.id !== messageId);
+            io.emit('messageDeleted', messageId);
+        }
+    });
 })
 
-server.listen(PORT, () => console.log('Server running...'))
+server.listen(PORT, () => console.log('Server running...'));
