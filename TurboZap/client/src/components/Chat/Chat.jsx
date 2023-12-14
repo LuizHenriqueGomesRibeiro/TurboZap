@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useRef, useState, useEffect } from "react";
 import style from './Chat.module.css';
-import io from 'socket.io-client';
 
 export default function Chat({socket}) {
     const bottomRef = useRef()
@@ -19,14 +19,6 @@ export default function Chat({socket}) {
         if(!message.trim) return
         socket.emit('message', message)
         clearInput()
-    }
-
-    function excluirMensagem() {
-        const botao = event.target;
-        const divPai = botao.parentNode;
-        const divAvo = divPai.parentNode;
-        const divBisavo = divAvo.parentNode;
-        divBisavo.remove();
     }
 
     const clearInput = () => {
