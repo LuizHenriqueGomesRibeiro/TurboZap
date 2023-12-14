@@ -21,13 +21,6 @@ io.on('connection', socket => {
         socket.data = { username };
     })
 
-    socket.on('set_admin', admin => {
-        console.log(admin);
-        socket.data = { ...socket.data, admin };
-        socket.emit('adminUpdated', admin);
-    });
-
-    
     socket.on('message', text => {
         const timestamp = new Date().getTime();
         const newMessage = {
@@ -35,7 +28,6 @@ io.on('connection', socket => {
             text,
             authorId: socket.id,
             author: socket.data.username,
-            admin: socket.data.admin,
             timestamp: timestamp
         };
 

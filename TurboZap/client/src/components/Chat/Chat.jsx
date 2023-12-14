@@ -2,10 +2,13 @@
 import { useRef, useState, useEffect } from "react";
 import style from './Chat.module.css';
 
-export default function Chat({ socket }) {
+export default function Chat({socket, admin}) {
+    console.log(admin);
+
     const bottomRef = useRef();
     const messageRef = useRef();
     const [messageList, setMessageList] = useState([]);
+
     useEffect(() => {
         socket.on('receive_message', data => {
             const timestampAfterReceive = new Date().getTime();
@@ -57,17 +60,16 @@ export default function Chat({ socket }) {
                     {messageList.map((message, index) => (
                         <div className={`${style['message-container']} ${message.authorId === socket.id && style['message-mine']}`} key={index}>
                             <div className="message-author">
-                            <div className={`${style['message-flex']}`}>
-                                <div className={`${style['nick-time-flex']}`}>
-                                    <strong>{message.author}: {message.latency} ms</strong>
+                                <div className={`${style['message-flex']}`}>
+                                    <div className={`${style['nick-time-flex']}`}>
+                                        <strong>{message.author}: {message.latency} ms</strong>
+                                    </div>
+                             
+                                            <div className={`${style['div-delete']}`} onClick={() => handleDeleteMessage(message.id)}>
+                                                <div className={`${style['button-delete']}`}>&#10006;</div>
+                                            </div>
+                                    
                                 </div>
-                                {
-                                    admin === 'admin' &&
-                                        <div className={`${style['div-delete']}`} onClick={() => handleDeleteMessage(message.id)}>
-                                            <div className={`${style['button-delete']}`}>&#10006;</div>
-                                        </div>
-                                }
-                            </div>
                                 <div className="message-text">{message.text}</div>
                             </div>
                         </div>
