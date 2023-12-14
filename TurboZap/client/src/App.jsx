@@ -8,7 +8,7 @@ function App() {
   const [socket, setSocket] = useState(null)
 
   return (
-    <div className="App">
+    <div id="App" className="App">
       {
         chatVisibility ? <Chat socket={socket}/> : <Join setSocket={setSocket} setChatVisibility={setChatVisibility} />
       }

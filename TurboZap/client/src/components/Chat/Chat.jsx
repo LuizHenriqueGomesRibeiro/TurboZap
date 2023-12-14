@@ -69,8 +69,8 @@ export default function Chat({ socket }) {
                 <div className={style["input-footer"]}>
                     <input className={style["input-self-footer"]} type="text" ref={messageRef} placeholder="Mensagem" />
                 </div>
-                <div>
-                    <button onClick={() => handleSubmit()}>Enviar</button>
+                <div className={style["button-footer"]}>
+                    <button className={style["send"]} onClick={() => handleSubmit()}>Enviar</button>
                 </div>
             </div>
         </div>

@@ -1,79 +1,135 @@
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh; 
-    overflow-y: auto; 
-  }
-  
-  .message-flex{
-    display: flex;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+  overflow-y: hidden; 
+}
 
-  .button-delete{
-    background-color: white;
-    width: 23px;
-    border-radius: 5px;
-    position: relative;
-    left: 5px;
-  }
+.message-flex{
+  display: flex;
+}
 
-  .button-delete:hover{
-    cursor: pointer;
-  }
+.button-delete{
+  background-color: white;
+  width: 18px;
+  border-radius: 5px;
+  position: relative;
+  left: 5px;
+  padding-left: 4px;
+}
 
-  .chat-container{
-    height: 80%;
-    width: 300px;
-    background-color: #fff;
+.button-delete:hover{
+  cursor: pointer;
+}
+
+.super-chat-container{
+  position: relative;
+  margin: auto;
+  background-color: blue;
+  height: calc(100vh - 30px);
+  margin: auto;
+  margin-bottom: 20px;
+  width: 300px;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 15px;
+  background-color: #fff;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
       border-radius: 15px;
-    }
-    
-    .chat-body{
-    padding: 0 10px;
-    height: 550px;
-    overflow-y: scroll;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-  }
-  
-  .message-container{
-    max-width: 250px;
-    width: fit-content;
-    background-color: lightgrey;
-    margin-top: 10px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    align-self: start;
-  }
-  
-  .message-mine{
-    align-self: end;
-    background-color: skyblue;
-  }
-  
-  .chat-footer{
-    position: relative;
-    top: -40px;
-    width: 300px;
-    box-sizing: border-box;
-    display:flex;
-    align-items: center;
-    bottom: 0;
-    height: 50px;
-    background-color: gray;
-    border-radius: 15px 15px 15px 15px;
-    padding: 10px;
-  }
+}
 
-  .input-footer{
-  }
+.chat-container{
+  position: relative;
+  margin: auto;
+}
+  
+.chat-body{
+  padding: 0 10px;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
 
-  .input-self-footer{
-    margin-left: 6px;
-    margin-right: 10px;
-    width: 170px;
-  }
+.message-container{
+  max-width: 250px;
+  width: fit-content;
+  background-color: lightgrey;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  align-self: start;
+  color: black;
+  font-size: .88em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.message-mine{
+  align-self: end;
+  background-color: skyblue;
+  float: right;
+}
+
+.chat-footer{
+  position: absolute;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  top: calc(100% - 50px);
+  background-color: #e8e8e8;
+  border-radius: 0 0 15px 15px;
+}
+
+.input-footer{
+  position: relative;
+  margin: auto;
+  width: 65%;
+}
+
+.button-footer{
+  position: relative;
+  left: -5px;
+  width: 25%;
+}
+
+.input-self-footer{
+  width: calc(100% - 10px);
+  border-radius: 8px;
+  height: 18px;
+  border: 3px solid #343a40;
+}
+
+.input-self-footer::placeholder{
+  color: black;
+  font-weight: 550;
+  font-size: .88em;
+  font-family: "Montserrat", sans-serif;
+}
+
+button.send {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 20px;
+  width: 65px;
+  height: 25px;
+  border: 3px solid #343a40;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: .75em;
+  font-weight: 550;
+  font-family: "Montserrat", sans-serif;
+}
+
+button:hover {
+  background: #343a40;
+  color: white;
+  font-size: .8em;
+}
+
