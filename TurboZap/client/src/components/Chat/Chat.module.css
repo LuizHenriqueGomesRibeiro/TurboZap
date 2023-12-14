@@ -7,6 +7,15 @@ body {
 
 .message-flex{
   display: flex;
+  width: 100%;
+}
+
+.message-text{
+  width: 80%;
+}
+
+.nick-time-flex{
+  width: 90%;
 }
 
 .button-delete{
