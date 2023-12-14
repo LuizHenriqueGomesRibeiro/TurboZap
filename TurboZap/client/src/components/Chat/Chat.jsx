@@ -46,29 +46,31 @@ export default function Chat({ socket }) {
     };
 
     return (
-        <div>
+        <div className={style['super-chat-container']}>
             <div className={style['chat-container']}>
                 <div className={style["chat-body"]}>
-                    {messageList.map((message, index) => (
-                        <div className={`${style["message-container"]} ${message.authorId === socket.id && style["message-mine"]}`} key={index}>
-                            <div className="message-author"><strong>{message.author}</strong></div>
-                            <div className={`${style["message-flex"]}`}>
-                                <div className="message-text">{message.text}</div>
-                               
+                    {
+                        messageList.map((message, index) => (
+                            <div className={`${style["message-container"]} ${message.authorId === socket.id && style["message-mine"]}`} key={index}>
+                                <div className="message-author"><strong>{message.author}</strong></div>
+                                <div className={`${style["message-flex"]}`}>
+                                    <div className="message-text">{message.text}</div>                              
                                     <div onClick={() => handleDeleteMessage(message.id)}>
                                         <div className={`${style["button-delete"]}`}>&#10006;</div>
-                                    </div>
-                                
+                                    </div>                               
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    }
                     <div ref={bottomRef} />
-                    <div className={style["chat-footer"]}>
-                        <div className={style["input-footer"]}>
-                            <input className={style["input-self-footer"]} type="text" ref={messageRef} placeholder="Mensagem" />
-                        </div>
-                        <button onClick={() => handleSubmit()}>Enviar</button>
-                    </div>
+                </div>
+            </div>
+            <div className={style["chat-footer"]}>
+                <div className={style["input-footer"]}>
+                    <input className={style["input-self-footer"]} type="text" ref={messageRef} placeholder="Mensagem" />
+                </div>
+                <div>
+                    <button onClick={() => handleSubmit()}>Enviar</button>
                 </div>
             </div>
         </div>
