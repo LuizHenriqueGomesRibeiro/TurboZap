@@ -2,7 +2,10 @@
 import { useRef, useState, useEffect } from "react";
 import style from './Chat.module.css';
 
-export default function Chat({socket, admin}) {
+// eslint-disable-next-line no-unused-vars
+export default function Chat({socket, admin, setAdmin}) {
+
+    console.log("valor de admin em Chart.jsx:");
     console.log(admin);
 
     const bottomRef = useRef();
@@ -14,8 +17,6 @@ export default function Chat({socket, admin}) {
             const timestampAfterReceive = new Date().getTime();
             const latency = timestampAfterReceive - data.timestamp;
 
-            console.log(`Latency: ${latency} ms`);
-
             const messageWithLatency = { ...data, latency: latency };
             setMessageList(prevMessages => [...prevMessages, messageWithLatency]);
         });
@@ -24,11 +25,15 @@ export default function Chat({socket, admin}) {
             setMessageList(prevMessages => prevMessages.filter(message => message.id !== deletedMessageId));
         });
 
+        socket.on('adminUpdated', updatedAdmin => {
+            setAdmin(updatedAdmin);
+        });
+
         return () => {
             socket.off('receive_message');
             socket.off('messageDeleted');
         };
-    }, [socket]);
+    }, [socket, setAdmin]);
 
     const handleSubmit = () => {
         const message = messageRef.current.value;
@@ -64,11 +69,12 @@ export default function Chat({socket, admin}) {
                                     <div className={`${style['nick-time-flex']}`}>
                                         <strong>{message.author}: {message.latency} ms</strong>
                                     </div>
-                             
+                                        { 
+                                            admin === 'admin' &&    
                                             <div className={`${style['div-delete']}`} onClick={() => handleDeleteMessage(message.id)}>
                                                 <div className={`${style['button-delete']}`}>&#10006;</div>
                                             </div>
-                                    
+                                        }
                                 </div>
                                 <div className="message-text">{message.text}</div>
                             </div>

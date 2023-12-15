@@ -15,11 +15,16 @@ io.on('connection', socket => {
 
     socket.on('disconnect', reason => {
         console.log('Usuário desconectado!', socket.id)
-    })
+    });
 
     socket.on('set_username', username => {
         socket.data = { username };
-    })
+    });
+
+    socket.on('set_admin', admin => {
+        socket.data = { ...socket.data, admin };
+        socket.emit('adminUpdated', admin);
+    });
 
     socket.on('message', text => {
         const timestamp = new Date().getTime();
@@ -28,11 +33,14 @@ io.on('connection', socket => {
             text,
             authorId: socket.id,
             author: socket.data.username,
+            admin: socket.data.admin,
             timestamp: timestamp
         };
 
         messageList.push(newMessage);
         io.emit('receive_message', newMessage);
+
+        io.emit('adminUpdated', socket.data.admin);
     })
 
     function generateId() {
