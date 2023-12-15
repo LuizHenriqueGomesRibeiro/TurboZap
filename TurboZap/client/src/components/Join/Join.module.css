@@ -34,6 +34,10 @@ h1{
     .join-input{
       width: calc(100% - 80px);
       margin-bottom: 10px;
+      border-radius: 15px;
+      height: 18px;
+      border: 1px solid #343a40;
+      text-indent: 7px;
     }
 }
 
@@ -46,6 +50,10 @@ h1{
   .join-input{
     width: calc(100% - 120px);
     margin-bottom: 10px;
+    border-radius: 15px;
+    height: 18px;
+    border: 1px solid #343a40;
+    text-indent: 7px;
   }
 }
 

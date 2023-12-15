@@ -56,7 +56,7 @@ export default function Chat({socket, admin, setAdmin}) {
         bottomRef.current.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const handleDeleteMessage = messageId => {
+    const handleDeleteMessage = async messageId => {
         socket.emit('deleteMessage', messageId);
     };
 
