@@ -1,13 +1,77 @@
-.join-container{
-    background-color: #FFF;
-    color: #000;
-    width: 400px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+h1{
+  margin: 0;
+}
+
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (min-width: 520px), screen and (min-height: 520px) {
+  .join-container{
+      background-color: #FFF;
+      color: #000;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
   
-    -webkit-box-shadow: 5px 5px 17px 1px rgba(0, 0, 0, 0.3);
-      box-shadow: 5px 5px 17px 1px rgba(0, 0, 0, 0.3);
+      position: relative;
+      margin: auto;
+      top: 50%;
+      transform: translate(0, -50%);
+  
+      -webkit-box-shadow: 5px 5px 17px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 5px 17px 1px rgba(0, 0, 0, 0.3);
+    }
+  
+    .join-screen{
+      height: 100%;
+    }
+
+    .join-input{
+      width: calc(100% - 80px);
+      margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 519px), screen and (max-height: 519px) {
+  .join-container{
+    height: 100vh;
+    width: 100vw;
   }
+
+  .join-input{
+    width: calc(100% - 120px);
+    margin-bottom: 10px;
+  }
+}
+
+label{
+  margin-bottom: 4px;
+  margin-top: 20px;
+}
+
+button.join-button {
+  position: relative;
+  margin-top: 25px;
+  border-radius: 20px;
+  width: 65px;
+  height: 25px;
+  border: 1px solid #343a40;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: .8em;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+
+button.join-button:hover {
+  background: #343a40;
+  color: white;
+  font-size: .85em;
+}

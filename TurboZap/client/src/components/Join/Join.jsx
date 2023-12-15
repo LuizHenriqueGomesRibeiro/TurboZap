@@ -24,11 +24,18 @@ export default function Join({ setChatVisibility, setSocket }) {
   };
 
   return (
-    <div className={style['join-container']}>
-      <h1>Join</h1>
-      <input type="text" ref={usernameRef} placeholder="Nome do usuário" />
-      <input type="text" ref={adminRef} placeholder="Admin" />
-      <button onClick={() => handleSubmit()}>Entrar</button>
+    <div className={style['join-screen']}>
+      <div className={style['join-container']}>
+        <h1>Junte-se à sala</h1>
+        <label htmlFor="nome">Digite seu nome:</label>
+        <input id="nome" name="nome" className={style['join-input']} type="text" ref={usernameRef} placeholder="Nome do usuário" />
+        <label htmlFor="admin">Você deseja ser <strong>Administrador</strong>?</label>
+        <select id="admin" name="admin" ref={adminRef}>
+          <option value="admin">Sim</option>
+          <option value="nao">Nao</option>
+        </select>
+        <button className={style['join-button']} onClick={() => handleSubmit()}>Entrar</button>
+      </div>
     </div>
   );
 }

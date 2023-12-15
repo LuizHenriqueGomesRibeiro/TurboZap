@@ -25,8 +25,10 @@ export default function Chat({socket, admin, setAdmin}) {
             setMessageList(prevMessages => prevMessages.filter(message => message.id !== deletedMessageId));
         });
 
-        socket.on('adminUpdated', updatedAdmin => {
-            setAdmin(updatedAdmin);
+        socket.on('adminUpdated', ({ userId, admin }) => {
+            if (socket.id === userId) {
+                setAdmin(admin);
+            }
         });
 
         return () => {

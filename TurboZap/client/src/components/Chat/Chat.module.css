@@ -31,31 +31,63 @@ body {
   cursor: pointer;
 }
 
-.super-chat-container{
-  position: relative;
-  margin: auto;
-  background-color: blue;
-  height: calc(100vh - 30px);
-  margin: auto;
-  margin-bottom: 20px;
-  width: 300px;
-  top: 50%;
-  transform: translate(0, -50%);
-  border-radius: 15px;
-  background-color: #fff;
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
-      box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
-      border-radius: 15px;
+@media screen and (min-width: 520px), screen and (min-height: 520px) {
+  .super-chat-container{
+    position: relative;
+    margin: auto;
+    background-color: blue;
+    height: calc(100vh - 30px);
+    margin: auto;
+    margin-bottom: 20px;
+    width: 500px;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 15px;
+    background-color: #fff;
+      -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+  }
+
+  .chat-footer{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    top: calc(100% - 50px);
+    background-color: #e8e8e8;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .chat-container{
+    position: relative;
+    margin: auto;
+  }
 }
 
-.chat-container{
-  position: relative;
-  margin: auto;
+@media screen and (max-width: 519px), screen and (max-height: 519px) {
+  .super-chat-container{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .chat-footer{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: #e8e8e8;
+  }
+
+  .chat-container{
+      height: calc(100% - 50px);
+  }
 }
   
 .chat-body{
-  padding: 0 10px;
-  height: calc(100vh - 50px);
+  padding: 15px 10px;
+  height: calc(100vh - 100px);
   overflow-y: scroll;
   color: #000;
   display: flex;
@@ -83,38 +115,32 @@ body {
   float: right;
 }
 
-.chat-footer{
-  position: absolute;
-  display: flex;
-  width: 300px;
-  height: 50px;
-  top: calc(100% - 50px);
-  background-color: #e8e8e8;
-  border-radius: 0 0 15px 15px;
-}
-
 .input-footer{
   position: relative;
   margin: auto;
-  width: 65%;
+  width: 80%;
 }
 
 .button-footer{
   position: relative;
-  left: -5px;
-  width: 25%;
+  margin-left: 20px;
+  width: 20%;
 }
 
 .input-self-footer{
   width: calc(100% - 10px);
-  border-radius: 8px;
+  border-radius: 15px;
   height: 18px;
-  border: 3px solid #343a40;
+  height: 21px;
+  border: 1px solid #343a40;
+  margin-left: 10px;
 }
 
 .input-self-footer::placeholder{
+  position: relative;
+  left: 10px;
   color: black;
-  font-weight: 550;
+  font-weight: 400;
   font-size: .88em;
   font-family: "Montserrat", sans-serif;
 }
@@ -126,13 +152,13 @@ button.send {
   border-radius: 20px;
   width: 65px;
   height: 25px;
-  border: 3px solid #343a40;
+  border: 1px solid #343a40;
   border-radius: 45px;
   transition: all 0.3s;
   cursor: pointer;
   background: white;
   font-size: .75em;
-  font-weight: 550;
+  font-weight: 400;
   font-family: "Montserrat", sans-serif;
 }
 
