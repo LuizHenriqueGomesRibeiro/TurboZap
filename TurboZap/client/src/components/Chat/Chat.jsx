@@ -69,7 +69,9 @@ export default function Chat({socket, admin, setAdmin}) {
                             <div className="message-author">
                                 <div className={`${style['message-flex']}`}>
                                     <div className={`${style['nick-time-flex']}`}>
-                                        <strong>{message.author}: {message.latency} ms</strong>
+                                        <p>
+                                            <strong>{message.author}: {message.latency} ms</strong>
+                                        </p>
                                     </div>
                                         { 
                                             admin === 'admin' &&    

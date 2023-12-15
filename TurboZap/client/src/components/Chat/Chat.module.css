@@ -5,6 +5,11 @@ body {
   overflow-y: hidden; 
 }
 
+p{
+  margin: 0;
+  white-space: nowrap;
+}
+
 .message-flex{
   display: flex;
   width: 100%;
@@ -134,6 +139,7 @@ body {
   height: 21px;
   border: 1px solid #343a40;
   margin-left: 10px;
+  text-indent: 7px;
 }
 
 .input-self-footer::placeholder{
